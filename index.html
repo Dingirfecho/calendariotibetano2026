@@ -11,173 +11,172 @@
             --tibetan-red: #DA251C;
             --dharma-green: #008010;
             --golden-yellow: #F4E109;
+            --bon-brown: #7B3F00;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--white);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; line-height: 1.6; }
+        header { background-color: var(--deep-blue); color: var(--golden-yellow); padding: 40px 20px; text-align: center; border-bottom: 8px solid var(--tibetan-red); }
+        h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
+        
+        .container { max-width: 1200px; margin: auto; padding: 30px 20px; }
+        
+        .legend { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .tag { font-size: 0.7rem; padding: 5px 10px; border-radius: 20px; color: white; text-transform: uppercase; font-weight: bold; display: inline-block; }
+        
+        .guru { background-color: var(--dharma-green); }
+        .dakini { background-color: var(--deep-blue); }
+        .dharmapala { background-color: var(--tibetan-red); }
+        .special { background-color: var(--golden-yellow); color: #000; }
+        .lineage { background-color: #444; }
+        .bon { background-color: var(--bon-brown); }
 
-        header {
-            background-color: var(--deep-blue);
-            color: var(--golden-yellow);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--tibetan-red);
-        }
+        .month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; }
+        .month-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 12px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .month-name { background-color: var(--deep-blue); color: var(--golden-yellow); padding: 15px; margin: 0; text-align: center; font-size: 1.4rem; }
+        
+        .event-list { list-style: none; padding: 0; margin: 0; }
+        .event-item { padding: 12px 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; transition: background 0.3s; }
+        .event-item:hover { background-color: #fffdf0; }
+        .event-item:last-child { border-bottom: none; }
+        
+        .day-number { font-weight: bold; color: var(--tibetan-red); width: 40px; font-size: 1.1rem; }
+        .event-desc { font-size: 0.9rem; flex-grow: 1; color: #222; }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .month-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .month-card {
-            border: 2px solid var(--deep-blue);
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #f9f9f9;
-        }
-
-        .month-name {
-            background-color: var(--tibetan-red);
-            color: var(--white);
-            padding: 10px;
-            margin: 0;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .event-list {
-            list-style: none;
-            padding: 15px;
-            margin: 0;
-        }
-
-        .event-item {
-            padding: 8px 0;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .day-number {
-            font-weight: bold;
-            color: var(--deep-blue);
-            min-width: 30px;
-        }
-
-        .event-desc {
-            flex-grow: 1;
-            padding-left: 10px;
-            font-size: 0.9rem;
-        }
-
-        .tag {
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: white;
-            margin-left: 5px;
-            text-transform: uppercase;
-        }
-
-        .guru { background-color: var(--dharma-green); } /* Día 10 */
-        .dakini { background-color: var(--deep-blue); } /* Día 25 */
-        .dharmapala { background-color: var(--tibetan-red); } /* Día 28 */
-        .special { background-color: var(--golden-yellow); color: black; }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: var(--deep-blue);
-            color: var(--white);
-            margin-top: 40px;
-        }
-
-        footer a {
-            color: var(--golden-yellow);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .legend {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
+        footer { background-color: var(--deep-blue); color: white; text-align: center; padding: 60px 20px; margin-top: 60px; border-top: 5px solid var(--golden-yellow); }
+        footer p { margin-bottom: 20px; font-size: 1.1rem; }
+        .web-link { display: inline-block; background-color: var(--tibetan-red); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: transform 0.2s; }
+        .web-link:hover { transform: scale(1.05); background-color: #b31d16; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Calendario Tibetano 2026</h1>
-    <p>Año del Caballo de Fuego Hembra 2153</p>
+    <p>Año del Caballo de Fuego 2153 - Las 6 Tradiciones Espirituales</p>
 </header>
 
 <div class="container">
     <div class="legend">
-        <span><small class="tag guru">Día 10</small> Guru Rinpoche</span>
-        <span><small class="tag dakini">Día 25</small> Dakinis</span>
-        <span><small class="tag dharmapala">Día 28</small> Dharmapalas</span>
-        <span><small class="tag special">Festividad</small> Especial</span>
+        <span class="tag guru">Día 10: Guru Rinpoche</span>
+        <span class="tag dakini">Día 25: Dakinis</span>
+        <span class="tag dharmapala">Día 28: Dharmapalas</span>
+        <span class="tag special">Festivales Duchen</span>
+        <span class="tag lineage">Maestros Budistas</span>
+        <span class="tag bon">Yungdrung Bön</span>
     </div>
 
     <div class="month-grid">
         <div class="month-card">
             <h2 class="month-name">Enero</h2>
             <ul class="event-list">
-                <li class="event-item"><span class="day-number">27</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
-                <li class="event-item"><span class="day-number">28</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
-                <li class="event-item"><span class="day-number">30</span> <span class="event-desc">Día de Dharmapalas <small class="tag dharmapala">28</small></span></li>
+                <li class="event-item"><span class="day-number">12</span><div class="event-desc">Aniversario Longchenpa (Nyingma) <span class="tag lineage">M</span></div></li>
+                <li class="event-item"><span class="day-number">28</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
             </ul>
         </div>
 
         <div class="month-card">
             <h2 class="month-name">Febrero</h2>
             <ul class="event-list">
-                <li class="event-item"><span class="day-number">17</span> <span class="event-desc">Fin del año 2152 (Gyalpo Losar)</span></li>
-                <li class="event-item"><span class="day-number">18</span> <span class="event-desc">LOSAR - Año Nuevo 2153 <small class="tag special">Hito</small></span></li>
-                <li class="event-item"><span class="day-number">27</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
+                <li class="event-item"><span class="day-number">1</span><div class="event-desc">Aniversario de Nyamme Sherab Gyaltsen <span class="tag bon">Bön</span></div></li>
+                <li class="event-item"><span class="day-number">17</span><div class="event-desc">Gutor: Ceremonias de Purificación</div></li>
+                <li class="event-item"><span class="day-number">18</span><div class="event-desc"><strong>LOSAR 2153</strong> <span class="tag special">Año Nuevo</span></div></li>
+                <li class="event-item"><span class="day-number">27</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
             </ul>
         </div>
 
         <div class="month-card">
             <h2 class="month-name">Marzo</h2>
             <ul class="event-list">
-                <li class="event-item"><span class="day-number">4</span> <span class="event-desc">Chotrul Duchen (Milagros) <small class="tag special">Gran Día</small></span></li>
-                <li class="event-item"><span class="day-number">13</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
-                <li class="event-item"><span class="day-number">16</span> <span class="event-desc">Día de Dharmapalas <small class="tag dharmapala">28</small></span></li>
-                <li class="event-item"><span class="day-number">28</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
+                <li class="event-item"><span class="day-number">2</span><div class="event-desc">Nacimiento de Tonpa Shenrab Miwoche <span class="tag bon">Bön</span></div></li>
+                <li class="event-item"><span class="day-number">4</span><div class="event-desc"><strong>Chotrul Duchen</strong> (Milagros) <span class="tag special">X10M</span></div></li>
+                <li class="event-item"><span class="day-number">24</span><div class="event-desc">Jetsun Dragpa Gyaltsen (Sakya) <span class="tag lineage">M</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Abril</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">11</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">26</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+                <li class="event-item"><span class="day-number">28</span><div class="event-desc">Día de Dharmapalas <span class="tag dharmapala">28</span></div></li>
             </ul>
         </div>
 
         <div class="month-card">
             <h2 class="month-name">Mayo</h2>
             <ul class="event-list">
-                <li class="event-item"><span class="day-number">12</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
-                <li class="event-item"><span class="day-number">31</span> <span class="event-desc">Saga Dawa Duchen <small class="tag special">Iluminación</small></span></li>
+                <li class="event-item"><span class="day-number">11</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">14</span><div class="event-desc">Mipham Rinpoche (Nyingma) <span class="tag lineage">M</span></div></li>
+                <li class="event-item"><span class="day-number">31</span><div class="event-desc"><strong>SAGA DAWA DUCHEN</strong> <span class="tag special">X100M</span></div></li>
             </ul>
         </div>
-        
+
+        <div class="month-card">
+            <h2 class="month-name">Junio</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">10</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">24</span><div class="event-desc">Cumpleaños de Guru Rinpoche <span class="tag special">Hito</span></div></li>
+            </ul>
         </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Julio</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">6</span><div class="event-desc">Cumpleaños S.S. Dalai Lama (89)</div></li>
+                <li class="event-item"><span class="day-number">18</span><div class="event-desc"><strong>Chokhor Duchen</strong> <span class="tag special">X10M</span></div></li>
+                <li class="event-item"><span class="day-number">24</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Agosto</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">8</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">22</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+                <li class="event-item"><span class="day-number">30</span><div class="event-desc">Aniversario Shardza Tashi Gyaltsen <span class="tag bon">Bön</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Septiembre</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">6</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">16</span><div class="event-desc">Dolpopa Sherab Gyaltsen (Jonang) <span class="tag lineage">M</span></div></li>
+                <li class="event-item"><span class="day-number">21</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Octubre</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">20</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+                <li class="event-item"><span class="day-number">31</span><div class="event-desc"><strong>Lhabab Duchen</strong> <span class="tag special">X10M</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Noviembre</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">4</span><div class="event-desc">Día de Dakinis <span class="tag dakini">25</span></div></li>
+                <li class="event-item"><span class="day-number">19</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+                <li class="event-item"><span class="day-number">23</span><div class="event-desc">Aniversario de Milarepa (Kagyu) <span class="tag lineage">M</span></div></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Diciembre</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">4</span><div class="event-desc">Ganden Ngamcho (Je Tsongkhapa) <span class="tag lineage">Gelug</span></div></li>
+                <li class="event-item"><span class="day-number">19</span><div class="event-desc">Día de Guru Rinpoche <span class="tag guru">10</span></div></li>
+                <li class="event-item"><span class="day-number">31</span><div class="event-desc">Día de Dharmapalas <span class="tag dharmapala">28</span></div></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>Para más información sobre prácticas, enseñanzas y el calendario completo:</p>
-    <a href="http://www.vajrakula.com" target="_blank">www.vajrakula.com</a>
+    <p>Para profundizar en las enseñanzas y la práctica:</p>
+    <a href="https://www.vajrakula.com" class="web-link" target="_blank">www.vajrakula.com</a>
 </footer>
 
 </body>
