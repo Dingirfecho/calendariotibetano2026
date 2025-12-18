@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Tibetano 2026 - Vajrakula</title>
+    <style>
+        :root {
+            --deep-blue: #29166F;
+            --white: #FFFFFF;
+            --tibetan-red: #DA251C;
+            --dharma-green: #008010;
+            --golden-yellow: #F4E109;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--deep-blue);
+            color: var(--golden-yellow);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--tibetan-red);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .month-card {
+            border: 2px solid var(--deep-blue);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .month-name {
+            background-color: var(--tibetan-red);
+            color: var(--white);
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .event-list {
+            list-style: none;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .event-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .day-number {
+            font-weight: bold;
+            color: var(--deep-blue);
+            min-width: 30px;
+        }
+
+        .event-desc {
+            flex-grow: 1;
+            padding-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: white;
+            margin-left: 5px;
+            text-transform: uppercase;
+        }
+
+        .guru { background-color: var(--dharma-green); } /* Día 10 */
+        .dakini { background-color: var(--deep-blue); } /* Día 25 */
+        .dharmapala { background-color: var(--tibetan-red); } /* Día 28 */
+        .special { background-color: var(--golden-yellow); color: black; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--deep-blue);
+            color: var(--white);
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--golden-yellow);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Calendario Tibetano 2026</h1>
+    <p>Año del Caballo de Fuego Hembra 2153</p>
+</header>
+
+<div class="container">
+    <div class="legend">
+        <span><small class="tag guru">Día 10</small> Guru Rinpoche</span>
+        <span><small class="tag dakini">Día 25</small> Dakinis</span>
+        <span><small class="tag dharmapala">Día 28</small> Dharmapalas</span>
+        <span><small class="tag special">Festividad</small> Especial</span>
+    </div>
+
+    <div class="month-grid">
+        <div class="month-card">
+            <h2 class="month-name">Enero</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">27</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
+                <li class="event-item"><span class="day-number">28</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
+                <li class="event-item"><span class="day-number">30</span> <span class="event-desc">Día de Dharmapalas <small class="tag dharmapala">28</small></span></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Febrero</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">17</span> <span class="event-desc">Fin del año 2152 (Gyalpo Losar)</span></li>
+                <li class="event-item"><span class="day-number">18</span> <span class="event-desc">LOSAR - Año Nuevo 2153 <small class="tag special">Hito</small></span></li>
+                <li class="event-item"><span class="day-number">27</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Marzo</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">4</span> <span class="event-desc">Chotrul Duchen (Milagros) <small class="tag special">Gran Día</small></span></li>
+                <li class="event-item"><span class="day-number">13</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
+                <li class="event-item"><span class="day-number">16</span> <span class="event-desc">Día de Dharmapalas <small class="tag dharmapala">28</small></span></li>
+                <li class="event-item"><span class="day-number">28</span> <span class="event-desc">Día de Guru Rinpoche <small class="tag guru">10</small></span></li>
+            </ul>
+        </div>
+
+        <div class="month-card">
+            <h2 class="month-name">Mayo</h2>
+            <ul class="event-list">
+                <li class="event-item"><span class="day-number">12</span> <span class="event-desc">Día de Dakinis <small class="tag dakini">25</small></span></li>
+                <li class="event-item"><span class="day-number">31</span> <span class="event-desc">Saga Dawa Duchen <small class="tag special">Iluminación</small></span></li>
+            </ul>
+        </div>
+        
+        </div>
+</div>
+
+<footer>
+    <p>Para más información sobre prácticas, enseñanzas y el calendario completo:</p>
+    <a href="http://www.vajrakula.com" target="_blank">www.vajrakula.com</a>
+</footer>
+
+</body>
+</html>
