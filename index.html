@@ -3,166 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Tibetano 2026 - Vajrakula</title>
+    <title>Calendario Tibetano 2026 | Vajrakula</title>
     <style>
         :root {
-            --deep-blue: #29166F;
-            --tibetan-red: #DA251C;
-            --golden-yellow: #F4E109;
-            --dharma-green: #008010;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --gold: #d4af37;
+            --red: #8a1c1c;
+            --guru-color: #ffcc00; /* Dorado brillante para Guru */
+            --dakini-color: #ff6b6b; /* Rojo suave para Dakini */
         }
-        body { font-family: 'Palatino', serif; background-color: #fdfaf6; margin: 0; color: #1a1a1a; }
-        header { background: var(--deep-blue); color: var(--golden-yellow); padding: 30px; text-align: center; border-bottom: 8px solid var(--tibetan-red); }
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .year-info {
+            font-weight: bold;
+            color: var(--red);
+            margin-top: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .month-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .month-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .month-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .event {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .date-badge {
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 40px;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        .event-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .lunar-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Tipos de Eventos */
+        .type-guru { border-left: 4px solid var(--guru-color); }
+        .type-guru .date-badge { color: var(--guru-color); }
         
-        .month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .month-card { background: white; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .month-header { background: var(--deep-blue); color: var(--golden-yellow); padding: 10px; text-align: center; border-radius: 8px 8px 0 0; }
+        .type-dakini { border-left: 4px solid var(--dakini-color); }
+        .type-dakini .date-badge { color: var(--dakini-color); }
+
+        .type-special { border-left: 4px solid #fff; background-color: rgba(138, 28, 28, 0.2); }
+        .type-special .date-badge { color: #fff; }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 600px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
         
-        .event-list { list-style: none; padding: 15px; margin: 0; font-size: 0.9rem; }
-        .event-item { margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; display: flex; align-items: baseline; }
-        .day { font-weight: bold; width: 30px; color: var(--tibetan-red); flex-shrink: 0; }
-        
-        .tag { font-size: 0.65rem; padding: 2px 5px; border-radius: 3px; color: white; font-weight: bold; margin-right: 5px; }
-        .protector { background: var(--tibetan-red); }
-        .hair { background: var(--dharma-green); }
-        .eclipse { background: black; }
-        .dakini { background: var(--deep-blue); }
-        
-        .legend { background: #eee; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.8rem; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>CALENDARIO DE PRÁCTICA 2026</h1>
-    <p>Año del Caballo de Fuego 2153 | Vajrakula</p>
-</header>
+    <header>
+        <h1>Calendario Vajrayana</h1>
+        <div class="year-info">2026 • AÑO DEL CABALLO DE FUEGO • 2153</div>
+        <p class="subtitle">Fechas esenciales de Tsog y Práctica</p>
+    </header>
 
-<div class="container">
     <div class="legend">
-        <div><span class="tag protector">29</span> Día de Dharmapalas</div>
-        <div><span class="tag hair">PELO</span> Corte de pelo (Auspicioso)</div>
-        <div><span class="tag eclipse">ECL</span> Eclipse (Potencia x Millones)</div>
-        <div><span class="tag dakini">25</span> Día de Dakinis</div>
+        <div class="legend-item"><span class="dot" style="background: var(--guru-color)"></span> Gurú Rinpoche (Día 10)</div>
+        <div class="legend-item"><span class="dot" style="background: var(--dakini-color)"></span> Dakini (Día 25)</div>
+        <div class="legend-item"><span class="dot" style="background: #fff"></span> Festividad Mayor</div>
     </div>
 
-    <div class="month-grid">
+    <div class="grid-container">
+
         <div class="month-card">
-            <div class="month-header"><h3>ENERO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">13</span><span class="desc"><span class="tag hair">PELO</span> Atrae riqueza y éxito.</span></li>
-                <li class="event-item"><span class="day">18</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong> (Fin mes lunar)</span></li>
-                <li class="event-item"><span class="day">28</span><span class="desc"><span class="tag protector">10</span> Guru Rinpoche</span></li>
-            </ul>
+            <div class="month-title">Enero</div>
+            <div class="event type-dakini">
+                <div class="date-badge">13</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 11, 2152)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">28</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 12, 2152)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>FEBRERO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">12</span><span class="desc"><span class="tag hair">PELO</span> Aumenta la vitalidad.</span></li>
-                <li class="event-item"><span class="day">16</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong> (Pre-Losar)</span></li>
-                <li class="event-item"><span class="day">17</span><span class="desc"><span class="tag eclipse">ECL</span> 🌑 Eclipse Solar (Anular)</span></li>
-                <li class="event-item"><span class="day">18</span><span class="desc">🎊 <strong>LOSAR 2153</strong> (Año Nuevo)</span></li>
-            </ul>
+            <div class="month-title">Febrero</div>
+            <div class="event type-dakini">
+                <div class="date-badge">11</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Fin de año)</span>
+                </div>
+            </div>
+            <div class="event type-special">
+                <div class="date-badge">18</div>
+                <div class="event-details">
+                    <span class="event-name">LOSAR (Año Nuevo)</span>
+                    <span class="lunar-date">1º Lunar - Caballo de Fuego</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">27</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 1)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>MARZO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">3</span><span class="desc"><span class="tag eclipse">ECL</span> 🌕 Eclipse Lunar (Total)</span></li>
-                <li class="event-item"><span class="day">4</span><span class="desc">🌟 Chotrul Duchen (Milagros)</span></li>
-                <li class="event-item"><span class="day">17</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">28</span><span class="desc"><span class="tag hair">PELO</span> Salud y larga vida.</span></li>
-            </ul>
+            <div class="month-title">Marzo</div>
+            <div class="event type-special">
+                <div class="date-badge">04</div>
+                <div class="event-details">
+                    <span class="event-name">Chotrul Duchen</span>
+                    <span class="lunar-date">Día de los Milagros (Luna Llena)</span>
+                </div>
+            </div>
+            <div class="event type-dakini">
+                <div class="date-badge">14</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 1)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">29</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 2)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>ABRIL</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">12</span><span class="desc"><span class="tag dakini">25</span> Día de Dakinis</span></li>
-                <li class="event-item"><span class="day">16</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">26</span><span class="desc"><span class="tag hair">PELO</span> Inteligencia y claridad.</span></li>
-            </ul>
+            <div class="month-title">Abril</div>
+            <div class="event type-dakini">
+                <div class="date-badge">12</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 2)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">27</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 3)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>MAYO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">15</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">25</span><span class="desc"><span class="tag hair">PELO</span> Atrae condiciones favorables.</span></li>
-                <li class="event-item"><span class="day">31</span><span class="desc">☸️ <strong>SAGA DAWA DUCHEN</strong></span></li>
-            </ul>
+            <div class="month-title">Mayo</div>
+            <div class="event type-dakini">
+                <div class="date-badge">12</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 3)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">26</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 4 - Saga Dawa)</span>
+                </div>
+            </div>
+            <div class="event type-special">
+                <div class="date-badge">31</div>
+                <div class="event-details">
+                    <span class="event-name">Saga Dawa Duchen</span>
+                    <span class="lunar-date">Iluminación de Buda (Luna Llena)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>JUNIO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">14</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">24</span><span class="desc"><span class="tag protector">10</span> Nacimiento de Guru Rinpoche</span></li>
-                <li class="event-item"><span class="day">25</span><span class="desc"><span class="tag hair">PELO</span> Aumenta el poder personal.</span></li>
-            </ul>
+            <div class="month-title">Junio</div>
+            <div class="event type-dakini">
+                <div class="date-badge">10</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 4)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">25</div>
+                <div class="event-details">
+                    <span class="event-name">Nacimiento de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 5)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>JULIO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">6</span><span class="desc">🎂 <strong>91º Aniv. Dalai Lama</strong></span></li>
-                <li class="event-item"><span class="day">13</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">18</span><span class="desc">🎡 Chokhor Duchen (Giro de Rueda)</span></li>
-            </ul>
+            <div class="month-title">Julio</div>
+            <div class="event type-dakini">
+                <div class="date-badge">10</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 5)</span>
+                </div>
+            </div>
+            <div class="event type-special">
+                <div class="date-badge">18</div>
+                <div class="event-details">
+                    <span class="event-name">Chokhor Duchen</span>
+                    <span class="lunar-date">Primer Giro de la Rueda (4º Lunar)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">24</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 6)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>AGOSTO</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">11</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong> (Pre-Eclipse)</span></li>
-                <li class="event-item"><span class="day">12</span><span class="desc"><span class="tag eclipse">ECL</span> 🌑 <strong>ECLIPSE SOLAR TOTAL</strong></span></li>
-                <li class="event-item"><span class="day">28</span><span class="desc"><span class="tag eclipse">ECL</span> 🌕 Eclipse Lunar Parcial</span></li>
-            </ul>
+            <div class="month-title">Agosto</div>
+            <div class="event type-dakini">
+                <div class="date-badge">08</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 6)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">23</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 7)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>SEPTIEMBRE</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">10</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">21</span><span class="desc"><span class="tag protector">10</span> Día de Guru Rinpoche</span></li>
-                <li class="event-item"><span class="day">23</span><span class="desc"><span class="tag hair">PELO</span> Atrae abundancia.</span></li>
-            </ul>
+            <div class="month-title">Septiembre</div>
+            <div class="event type-dakini">
+                <div class="date-badge">07</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 7)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">21</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 8)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>OCTUBRE</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">10</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">22</span><span class="desc"><span class="tag hair">PELO</span> Longevidad y mérito.</span></li>
-                <li class="event-item"><span class="day">31</span><span class="desc">🌈 Lhabab Duchen (Descenso Buda)</span></li>
-            </ul>
+            <div class="month-title">Octubre</div>
+            <div class="event type-dakini">
+                <div class="date-badge">06</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 8)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">20</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 9)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>NOVIEMBRE</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">8</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">19</span><span class="desc"><span class="tag protector">10</span> Día de Guru Rinpoche</span></li>
-                <li class="event-item"><span class="day">21</span><span class="desc"><span class="tag hair">PELO</span> Éxito en la práctica.</span></li>
-            </ul>
+            <div class="month-title">Noviembre</div>
+            <div class="event type-special">
+                <div class="date-badge">01</div>
+                <div class="event-details">
+                    <span class="event-name">Lhabab Duchen</span>
+                    <span class="lunar-date">Descenso del Cielo (22º Lunar)</span>
+                </div>
+            </div>
+            <div class="event type-dakini">
+                <div class="date-badge">04</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 9)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">19</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 10)</span>
+                </div>
+            </div>
         </div>
 
         <div class="month-card">
-            <div class="month-header"><h3>DICIEMBRE</h3></div>
-            <ul class="event-list">
-                <li class="event-item"><span class="day">4</span><span class="desc">🕯️ Ganden Ngamcho (Tsongkhapa)</span></li>
-                <li class="event-item"><span class="day">8</span><span class="desc"><span class="tag protector">29</span> <strong>Dharmapalas</strong></span></li>
-                <li class="event-item"><span class="day">20</span><span class="desc"><span class="tag hair">PELO</span> Purificación de obstáculos.</span></li>
-            </ul>
+            <div class="month-title">Diciembre</div>
+            <div class="event type-dakini">
+                <div class="date-badge">04</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Dakini</span>
+                    <span class="lunar-date">25º Lunar (Mes 10)</span>
+                </div>
+            </div>
+            <div class="event type-guru">
+                <div class="date-badge">18</div>
+                <div class="event-details">
+                    <span class="event-name">Tsog de Gurú Rinpoche</span>
+                    <span class="lunar-date">10º Lunar (Mes 11)</span>
+                </div>
+            </div>
         </div>
+
     </div>
-</div>
 
-<footer>
-    <p>Actualizado para la comunidad de Vajrakula.</p>
-</footer>
+    <footer>
+        <p>Vajrakula © 2026<br>
+        *Las fechas son calculadas para la zona horaria estándar y pueden variar según la tradición astrológica específica (Phugpa/Tsurphu).<br>
+        En caso de duda, practicar el día anterior es siempre auspicioso.</p>
+    </footer>
 
 </body>
 </html>
